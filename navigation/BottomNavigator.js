@@ -15,20 +15,35 @@ const BottomStack = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        tabBarStyle: { height: 49 },
+        tabBarLabelStyle: { padding: 10, marginTop: -10 },
+        tabBarActiveTintColor: "#000000",
+        headerShown: false,
+      }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarLabel: "홈",
-          tabBarIcon: ({ color, size }) => {
-            return (
-              <Image
-                style={{ width: size, height: size }}
-                source={require("../assets/icons/home.png")}
-              />
-            );
+          size: 30,
+          tabBarIcon: ({ focused, color, size }) => {
+            if (this.name === "Home") {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require("../assets/icons/homeActive.png")}
+                />
+              );
+            } else {
+              return (
+                <Image
+                  style={{ width: size, height: size }}
+                  source={require("../assets/icons/home.png")}
+                />
+              );
+            }
           },
         }}
       />

@@ -4,11 +4,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomStack from "./BottomNavigator";
 
-import Home from "../pages/Home";
+// import Home from "../pages/Home";
 import Community from "../pages/Community";
 import SchoolLife from "../pages/SchoolLife";
 import Competition from "../pages/Competition";
 import MyPage from "../pages/MyPage";
+import Alarm from "../pages/Alarm";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -75,22 +77,25 @@ const DrawerNavigator = () => {
     <Drawer.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
+          backgroundColor: "#FFFFFF", //Set Header color
         },
-        headerTintColor: "#fff", //Set Header text color
       }}
     >
       <Drawer.Screen
         name="HomeStack"
+        initialRouteName="Alarm"
         options={{
           headerRight: () => (
-            <Image
-              style={{ width: "20%" }}
-              source={require("../assets/bell.png")}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{ width: 24, height: 24 }}
+                source={require("../assets/bell.png")}
+              />
+            </TouchableOpacity>
           ),
           drawerLabel: "홈",
           title: "홈",
+          tabBarBadge: 3,
         }}
         component={HomeStack}
       />
