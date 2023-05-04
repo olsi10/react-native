@@ -1,7 +1,5 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-
-import { Image, View } from "react-native";
 
 import Home from "../pages/Home";
 import Community from "../pages/Community";
@@ -9,61 +7,93 @@ import SchoolLife from "../pages/SchoolLife";
 import Competition from "../pages/Competition";
 import MyPage from "../pages/MyPage";
 
-// import homeIcon from "../assets/icons/home-alt.png";
-// import bell from "../assets/bell.png";
+import { Image } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
-const BottomNavigator = () => {
+const BottomStack = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{
-        tabBarActiveTintColor: "rgba(23, 227, 129, 1)",
-      }}
+      screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          title: "홈",
-          // tabBarIcon: ({ color, size }) => <Image source={homeIcon} />,
+          tabBarLabel: "홈",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <Image
+                style={{ width: size, height: size }}
+                source={require("../assets/icons/home.png")}
+              />
+            );
+          },
         }}
       />
       <Tab.Screen
         name="Community"
         component={Community}
         options={{
-          title: "커뮤니티",
-          // tabBarIcon: ({ color, size }) => <Image source={homeIcon} />,
+          tabBarLabel: "커뮤니티",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <Image
+                style={{ width: size, height: size }}
+                source={require("../assets/icons/chat.png")}
+              />
+            );
+          },
         }}
       />
       <Tab.Screen
-        name="ScoolLife"
+        name="SchoolLife"
         component={SchoolLife}
         options={{
-          title: "학교생활",
-          // tabBarIcon: ({ color, size }) => <Image source={homeIcon} />,
+          tabBarLabel: "학교생활",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <Image
+                style={{ width: size, height: size }}
+                source={require("../assets/icons/notebook.png")}
+              />
+            );
+          },
         }}
       />
       <Tab.Screen
         name="Competition"
         component={Competition}
         options={{
-          title: "공모전",
-          // tabBarIcon: ({ color, size }) => <Image source={homeIcon} />,
+          tabBarLabel: "공모전",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <Image
+                style={{ width: size, height: size }}
+                source={require("../assets/icons/cup.png")}
+              />
+            );
+          },
         }}
       />
       <Tab.Screen
         name="MyPage"
         component={MyPage}
         options={{
-          title: "My",
-          // tabBarIcon: ({ color, size }) => <Image source={homeIcon} />,
+          tabBarLabel: "My",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <Image
+                style={{ width: size, height: size }}
+                source={require("../assets/icons/person.png")}
+              />
+            );
+          },
         }}
       />
     </Tab.Navigator>
   );
 };
 
-export default BottomNavigator;
+export default BottomStack;

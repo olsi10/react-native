@@ -1,46 +1,133 @@
 import React from "react";
 import { Image } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Home from "../pages/Home";
-import Alarm from "../pages/Alarm";
-import alarmIcon from "../assets/bell.png";
+import { createStackNavigator } from "@react-navigation/stack";
+import BottomStack from "./BottomNavigator";
 
-function HeaderR() {
-  return <Image style={{ width: "20%" }} source={alarmIcon} />;
-}
+import Home from "../pages/Home";
+import Community from "../pages/Community";
+import SchoolLife from "../pages/SchoolLife";
+import Competition from "../pages/Competition";
+import MyPage from "../pages/MyPage";
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-function DrawerNavigator() {
+const HomeStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="BottomStack" component={BottomStack} />
+    </Stack.Navigator>
+  );
+};
+
+const CommunityStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Community"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={Community} />
+    </Stack.Navigator>
+  );
+};
+
+const SchoolLifeScreen = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="SchoolLife"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={SchoolLife} />
+    </Stack.Navigator>
+  );
+};
+
+const CompetitionScreen = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Competition"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={Competition} />
+    </Stack.Navigator>
+  );
+};
+
+const MyPageScreen = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="MyPage"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={MyPage} />
+    </Stack.Navigator>
+  );
+};
+
+// Drawer
+
+const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerShown: true,
         headerStyle: {
-          shadowOpacity: 0,
+          backgroundColor: "#f4511e", //Set Header color
         },
-        headerTitle: "",
+        headerTintColor: "#fff", //Set Header text color
       }}
     >
       <Drawer.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
         options={{
-          headerRight: () => <HeaderR />,
-          headerRightContainerStyle: { paddingRight: 10 },
-          headerLeftContainerStyle: { paddingRight: 10 },
+          headerRight: () => (
+            <Image
+              style={{ width: "20%" }}
+              source={require("../assets/bell.png")}
+            />
+          ),
+          drawerLabel: "홈",
+          title: "홈",
         }}
+        component={HomeStack}
       />
-      <Drawer.Screen name="Alarm" component={Alarm} />
+      <Drawer.Screen
+        name="CommunityStack"
+        options={{
+          drawerLabel: "커뮤니티",
+          title: "커뮤니티",
+        }}
+        component={CommunityStack}
+      />
+      <Drawer.Screen
+        name="SchoolLifeScreen"
+        options={{
+          drawerLabel: "학교생활",
+          title: "학교생활",
+        }}
+        component={SchoolLifeScreen}
+      />
+      <Drawer.Screen
+        name="CompetitionScreen"
+        options={{
+          drawerLabel: "공모전",
+          title: "공모전",
+        }}
+        component={CompetitionScreen}
+      />
+      <Drawer.Screen
+        name="MyPageScreen"
+        options={{
+          drawerLabel: "My",
+          title: "My",
+        }}
+        component={MyPageScreen}
+      />
     </Drawer.Navigator>
   );
-}
-// <Drawer.Navigator
-//   initialRouteName=" "
-//   drawerPosition="left"
-//   backBehavior="history"
-// >
-//   <Drawer.Screen name="Home" component={Home} />
-// </Drawer.Navigator>
+};
 
 export default DrawerNavigator;
