@@ -1,24 +1,36 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import DrawerNavigator from "../navigation/DrawerNavigator";
-import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-function Home() {
+const Stack = createStackNavigator();
+
+const Home = () => {
   return (
     <View style={styles.container}>
-      <Text>홈</Text>
+      <Text>Home</Text>
     </View>
   );
-}
+};
+
+const HomeNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="HomeScreen" component={Home} />
+    </Stack.Navigator>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 40,
-    backgroundColor: "rgba(255, 255, 255, 1)",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
-export default Home;
+export default HomeNavigator;

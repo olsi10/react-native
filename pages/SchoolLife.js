@@ -1,12 +1,36 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 const SchoolLife = () => {
   return (
-    <View>
-      <Text>학교생활</Text>
+    <View style={styles.container}>
+      <Text>Home</Text>
     </View>
   );
 };
 
-export default SchoolLife;
+const SchoolLifeNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="SchoolLifeScreen" component={SchoolLife} />
+    </Stack.Navigator>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
+export default SchoolLifeNavigator;
