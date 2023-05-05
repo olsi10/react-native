@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const SchoolLife = () => {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text>학교생활</Text>
     </View>
   );
 };
