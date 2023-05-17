@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeSwiper from "../components/HomeSwiper";
 import MealFlatlist from "../components/MealFlatlist";
+import Schedule from "../components/Schedule";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const Home = () => {
       <View style={styles.container}>
         <HomeSwiper />
         <MealFlatlist />
+        <Schedule />
       </View>
     </ScrollView>
   );
