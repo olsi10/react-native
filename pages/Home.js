@@ -2,15 +2,20 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import HomeSwiper from "../components/HomeSwiper";
+import MealFlatlist from "../components/MealFlatlist";
 
 const Stack = createStackNavigator();
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <HomeSwiper />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <HomeSwiper />
+        <MealFlatlist />
+      </View>
+    </ScrollView>
   );
 };
 
